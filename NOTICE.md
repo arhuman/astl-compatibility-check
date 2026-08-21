@@ -10,7 +10,7 @@
 
 `corpus/` is a copy of the upstream `examples/` tree, with symlinks
 dereferenced. `golden/golden_pep8.txt` is the output of ansible-lint 26.8.0
-run over that tree, filtered to the 36 rules astl implements, with paths
+run over that tree, filtered to the 38 rules astl implements, with paths
 rewritten to the `corpus/` prefix. Both are derivative works of ansible-lint.
 
 ## License of this repository
