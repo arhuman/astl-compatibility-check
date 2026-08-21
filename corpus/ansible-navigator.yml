@@ -1,0 +1,3 @@
+---
+# see https://docs.ansible.com/projects/navigator/settings/
+ansible-navigator: {}

@@ -1,0 +1,110 @@
+---
+- name: Fixture to validate module options pass scenario
+  hosts: localhost
+  tasks:
+    - name: Clone content repository
+      ansible.builtin.git:
+        repo: "{{ archive_services_repo_url }}"
+        dest: /home/www
+        accept_hostkey: true
+        version: master
+        update: false
+
+    - name: Enable service httpd and ensure it is not masked
+      ansible.builtin.systemd:
+        name: httpd
+        enabled: false
+        masked: false
+
+    - name: Clear deployment dir
+      ansible.builtin.file:
+        path: /opt/software/deployment
+        state: "{{ item }}"
+        mode: "0755"
+      with_items:
+        - absent
+        - directory
+
+    - name: Bug https://github.com/ansible/ansible-lint/issues/2962
+      become: true
+      ansible.builtin.copy:
+        src: "{{ zj_item['src'] | default(omit) }}"
+        content: "{{ zj_item['content'] | default(omit) }}"
+        dest: "{{ zj_item['dest'] }}"
+        mode: "0644"
+      loop: "{{ copy_items }}"
+      loop_control:
+        loop_var: zj_item
+
+    - name: Bug 2428 daemon_reload should be allowed
+      ansible.builtin.systemd:
+        name: foo
+        state: restarted
+        daemon_reload: true
+
+    - name: Bug 2424 async_status
+      ansible.builtin.async_status:
+        jid: "{{ 999 }}"
+
+    - name: Bug https://github.com/VSChina/vscode-ansible/issues/261
+      ansible.builtin.set_fact:
+        dns_nameservers: "{{ var1 }}"
+
+    - name: Bug cmd should be allowed
+      ansible.builtin.command:
+        cmd: echo "foo"
+      changed_when: false
+
+    - name: Bag another allowed form of command
+      ansible.builtin.command: "/etc/test.sh"
+      changed_when: false
+
+    - name: Bug 3090
+      community.docker.docker_container_exec:
+        container: foo
+        argv:
+          - /bin/bash
+          - "-c"
+          - "ls -lah > /dev/stderr"
+        chdir: /root
+      register: result
+
+    - name: "Bug 3138"
+      become: true
+      ansible.builtin.service:
+        name: "jenkins"
+        state: started
+        # 'use' is dropped by preprocessing ...
+        use: "{{ ansible_service_mgr }}"
+      changed_when: false
+
+    - name: "Bug 3152"
+      ansible.posix.synchronize:
+        src: .
+        dest: .
+        owner: false
+        group: false
+        use_ssh_args: true
+
+    - name: Create software directory (Windows module - Bug 3200)
+      ansible.windows.win_file:
+        path: "c:\\test_dir"
+        state: directory
+
+    - name: Ansible-lint for args rule should succeed (Bug - 3199)
+      vars:
+        copy_vars:
+          src: "args.json"
+      action: ansible.builtin.copy
+      args: "{{ copy_vars }}" # since, we're unable to analyze jinja, we skip this kind of checks
+
+    - name: Variable containing list of non-strings should pass (Bug 4229)
+      community.general.mas:
+        id: "{{ item }}"
+        state: present
+      loop: "{{ mas_app_ids }}"
+      vars:
+        mas_app_ids:
+          - 409183694
+          - 409203825
+          - 409201541

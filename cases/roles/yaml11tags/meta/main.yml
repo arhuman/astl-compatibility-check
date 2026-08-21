@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: astl
+  description: A galaxy tag written as a bare PyYAML boolean
+  company: none
+  license: GPL-3.0-or-later
+  min_ansible_version: "2.14"
+  galaxy_tags:
+    - web
+    - no
+dependencies: []

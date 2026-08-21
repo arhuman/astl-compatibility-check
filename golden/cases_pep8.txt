@@ -1,0 +1,9 @@
+cases/roles/yaml11tags/meta/main.yml:10: yaml[truthy][/]: Truthy value should be one of [false, true]
+cases/roles/yaml11tags/meta/main.yml:1: meta-no-tags: Tags must be strings: 'False'
+cases/yaml11-booleans.yml:15: yaml[truthy][/]: Truthy value should be one of [false, true]
+cases/yaml11-booleans.yml:21: yaml[truthy][/]: Truthy value should be one of [false, true]
+cases/yaml11-booleans.yml:23: risky-file-permissions: File permissions unset or incorrect.
+cases/yaml11-booleans.yml:29: risky-file-permissions: File permissions unset or incorrect.
+cases/yaml11-booleans.yml:33: yaml[truthy][/]: Truthy value should be one of [false, true]
+cases/yaml11-booleans.yml:40: deprecated-bare-vars: Possible bare variable '['my_list', False]' used in a 'with_nested' loop. You should use the full variable syntax ('{{ ['my_list', False] }}') or convert it to a list if that is not really a variable.
+cases/yaml11-booleans.yml:45: yaml[truthy][/]: Truthy value should be one of [false, true]

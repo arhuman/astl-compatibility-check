@@ -1,0 +1,12 @@
+---
+# comment without space
+#
+# second comment after blank
+### multi-hash comment
+### multi-hash without space
+- name: Fixture
+  hosts: localhost
+  tasks:
+    - name: Task
+      ansible.builtin.debug:
+        msg: hello # inline without space

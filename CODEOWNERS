@@ -1,0 +1,7 @@
+# Review routing. Every path falls to the maintainer unless listed otherwise.
+* @arhuman
+
+# The contract itself: a change here redefines what compatibility means, so it
+# never merges without the maintainer.
+/golden/ @arhuman
+/PARITY.md @arhuman

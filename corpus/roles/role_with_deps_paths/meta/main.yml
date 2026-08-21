@@ -1,0 +1,10 @@
+---
+dependencies:
+  - role: subfolder/1st_role
+    vars:
+      param: baz
+  - role: subfolder
+    vars:
+      param: baz
+  - role: subfolder/2nd_role
+  - subfolder/3rd_role

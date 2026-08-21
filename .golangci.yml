@@ -1,0 +1,38 @@
+# golangci-lint v2 config, minimal tier of the 10x ladder: the lowest-friction
+# gate that still catches real correctness and resource bugs. gosec stays on at
+# every tier; exclude a specific rule at a specific path with a reason, never
+# drop the linter. Pin the binary to the Makefile's GOLANGCI_VERSION.
+
+version: "2"
+
+linters:
+  default: none
+  enable:
+    - bodyclose        # HTTP response bodies are closed
+    - contextcheck     # functions use an inherited context, not context.Background mid-call
+    - gosec            # security-oriented checks; required at every tier
+    - govet            # stdlib correctness vet checks
+    - noctx            # no HTTP requests without a context.Context
+    - revive           # broad style/correctness rules (golint successor)
+    - sqlclosecheck    # sql.Rows / sql.Stmt are closed
+    - staticcheck      # the staticcheck suite
+  settings:
+    staticcheck:
+      checks:
+        - "all"
+        - "-ST1000"    # do not require package comments on every package
+        - "-U1000"     # tolerate unused code (early-stage churn)
+  exclusions:
+    rules:
+      # The harness builds and runs a binary from a caller-supplied path
+      # (ASTL_REPO) and walks fixture trees, which is what gosec's subprocess and
+      # file rules flag. noctx hits the same exec calls, where go test's own
+      # timeout is the deadline. None of this code ships anywhere.
+      - path: _test\.go
+        linters:
+          - gosec
+          - noctx
+
+formatters:
+  enable:
+    - gofmt

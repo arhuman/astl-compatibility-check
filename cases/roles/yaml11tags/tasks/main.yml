@@ -1,0 +1,4 @@
+---
+- name: Nothing
+  ansible.builtin.debug:
+    msg: placeholder

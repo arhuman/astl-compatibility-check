@@ -1,0 +1,25 @@
+---
+- name: Example with discouraged free-form syntax
+  hosts: localhost
+  tasks:
+    - name: Create a placeholder file
+      ansible.builtin.command: chdir=/tmp touch foo # <-- don't use shorthand
+      changed_when: false
+
+    - name: Use raw to echo
+      ansible.builtin.raw: executable=/bin/bash echo foo # <-- don't use executable=
+      changed_when: false
+
+    - name: Testing anything else passed to raw except for string
+      ansible.builtin.raw:
+        args: "123"
+      changed_when: false
+
+    - name: Short name with multiple params (Issue 4750)
+      file: path=/tmp/short1 state=directory mode=0755
+
+    - name: FQCN builtin with free-form
+      ansible.builtin.uri: url=http://example.com return_content=yes
+
+    - name: Short name without a task name
+      template: src=foo.j2 dest=/tmp/foo

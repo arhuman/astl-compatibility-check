@@ -1,0 +1,4 @@
+---
+- name: included_file | Test Fixture
+  ansible.builtin.debug:
+    msg: "was found & included"

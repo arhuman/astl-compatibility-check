@@ -1,0 +1,11 @@
+coverage.out
+*.swp
+
+# A workspace file here would hold a machine-specific path and silently change
+# what the harness builds. ASTL_REPO is the supported override.
+go.work
+go.work.sum
+
+# The project instructions file is checked in; a global ignore must not hide it.
+!/CLAUDE.md
+__pycache__/

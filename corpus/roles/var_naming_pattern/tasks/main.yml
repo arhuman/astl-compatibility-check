@@ -1,0 +1,4 @@
+---
+- name: Foobar
+  ansible.builtin.set_fact:
+    var_naming_pattern__namespace: "foo"

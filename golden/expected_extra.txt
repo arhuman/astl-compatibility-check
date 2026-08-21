@@ -1,0 +1,46 @@
+corpus/playbooks/block.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/block.yml:5: name[missing][/]: All tasks should be named.
+corpus/playbooks/block.yml:8: name[missing][/]: All tasks should be named.
+corpus/playbooks/include.yml:12: name[missing][/]: All tasks should be named.
+corpus/playbooks/include.yml:13: name[missing][/]: All tasks should be named.
+corpus/playbooks/include.yml:14: name[missing][/]: All tasks should be named.
+corpus/playbooks/include.yml:17: name[missing][/]: All tasks should be named.
+corpus/playbooks/include.yml:19:3: name[play][/]: All plays should be named.
+corpus/playbooks/include.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/include.yml:5: name[missing][/]: All tasks should be named.
+corpus/playbooks/include.yml:9:29: var-naming[no-role-prefix]: Variables names from within roles should use more_complex_ as a prefix. (vars: t)
+corpus/playbooks/mocked_dependency.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/multiline-brackets-do-not-match-test.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/multiline-brackets-do-not-match-test.yml:2:3: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/base_os)
+corpus/playbooks/multiline-brackets-do-not-match-test.yml:2:3: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/pods)
+corpus/playbooks/multiline-brackets-do-not-match-test.yml:2:3: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/repos)
+corpus/playbooks/multiline-brackets-do-not-match-test.yml:6:7: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/openshift_master)
+corpus/playbooks/multiline-bracketsmatchtest.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/multiline-bracketsmatchtest.yml:2:3: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/base_os)
+corpus/playbooks/multiline-bracketsmatchtest.yml:2:3: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/pods)
+corpus/playbooks/multiline-bracketsmatchtest.yml:2:3: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/repos)
+corpus/playbooks/multiline-bracketsmatchtest.yml:6:7: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/openshift_master)
+corpus/playbooks/nomatches.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/norole.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/norole2.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/rule-fqcn-pass.yml:12: no-changed-when: Commands should not change things if nothing needs doing.
+corpus/playbooks/rule-no-jinja-when-fail.yml:13:7: no-jinja-when: No Jinja2 in when.
+corpus/playbooks/rule-no-jinja-when-fail.yml:19:7: no-jinja-when: No Jinja2 in when.
+corpus/playbooks/rule-no-jinja-when-fail.yml:5: no-jinja-when: No Jinja2 in when.
+corpus/playbooks/rule-no-tabs.yml:12:14: no-tabs: Most files should not contain tabs.
+corpus/playbooks/rule-no-tabs.yml:15:18: no-tabs: Most files should not contain tabs.
+corpus/playbooks/rule-no-tabs.yml:15:9: no-tabs: Most files should not contain tabs.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:16: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:25: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:33: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:37: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:45: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:49: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:58: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:6: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:67: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:76: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-risky-file-permissions-fail.yml:85: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/syntax-error-string.yml:4:3: name[play][/]: All plays should be named.
+corpus/playbooks/tasks/directory with spaces/main.yml:3: name[missing][/]: All tasks should be named.
+corpus/playbooks/with-umlaut-ä.yml:2:3: name[play][/]: All plays should be named.

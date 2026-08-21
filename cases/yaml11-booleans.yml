@@ -1,0 +1,45 @@
+---
+- name: PyYAML boolean spellings on a module argument
+  hosts: all
+  tasks:
+    - name: Create is bare false, so nothing is created
+      ansible.builtin.lineinfile:
+        path: /tmp/a
+        line: x
+        create: false
+
+    - name: Create is bare no, which PyYAML also reads as false
+      ansible.builtin.lineinfile:
+        path: /tmp/b
+        line: x
+        create: no
+
+    - name: Create is bare off, likewise false
+      ansible.builtin.lineinfile:
+        path: /tmp/c
+        line: x
+        create: off
+
+    - name: Create is quoted no, which is a non-empty string and so true
+      ansible.builtin.lineinfile:
+        path: /tmp/d
+        line: x
+        create: "no"
+
+    - name: Create is bare YES, which is true
+      ansible.builtin.lineinfile:
+        path: /tmp/e
+        line: x
+        create: YES
+
+- name: PyYAML boolean spellings rendered into a message
+  hosts: all
+  tasks:
+    # The message interpolates the whole loop value, so the bare `no` goes
+    # through the rendering path: ansible-lint prints Python's False, not "no".
+    - name: Nested loop over a list holding a bare boolean
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      with_nested:
+        - my_list
+        - no
