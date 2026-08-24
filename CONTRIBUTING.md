@@ -44,6 +44,14 @@ Every line astl emits beyond the golden must be read and explained in
 `PARITY.md` before it enters the file; an unreviewed extra is a false positive
 shipped as a contract. `make regenerate` deliberately refuses to touch it.
 
+Never commit an `.ansible-lint-ignore` (or `.config/ansible-lint-ignore.txt`) at
+this repository's root. The harness runs the linter from here, and that is the
+one directory an ignore file is read from, so a single entry would silently
+suppress findings across the whole corpus and every case at once. There is no
+guard against it: the golden would simply agree with a linter that had been told
+to say less. Ignore-file behaviour is covered by the CLI tests in
+`ansible-static-lint`, which control their own working directory.
+
 ## Commit messages
 
 [Conventional Commits](https://www.conventionalcommits.org/):
