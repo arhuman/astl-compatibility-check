@@ -44,3 +44,5 @@ corpus/playbooks/rule-risky-file-permissions-fail.yml:85: risky-file-permissions
 corpus/playbooks/syntax-error-string.yml:4:3: name[play][/]: All plays should be named.
 corpus/playbooks/tasks/directory with spaces/main.yml:3: name[missing][/]: All tasks should be named.
 corpus/playbooks/with-umlaut-ä.yml:2:3: name[play][/]: All plays should be named.
+corpus/site.yml:3:3: name[play][/]: All plays should be named.
+corpus/site.yml:4:3: name[play][/]: All plays should be named.

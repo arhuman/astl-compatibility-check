@@ -31,10 +31,10 @@ Reproduce with `make check`.
 | Golden lines | 2370 |
 | Matched | 2370 (100%) |
 | Missing | 0 |
-| Extra (false positives) | 46 |
+| Extra (false positives) | 48 |
 
-astl emits 2416 lines: every golden line, plus the 46 findings ansible-lint
-does not report. Those 46 are pinned line for line in
+astl emits 2418 lines: every golden line, plus the 48 findings ansible-lint
+does not report. Those 48 are pinned line for line in
 `golden/expected_extra.txt`, and the harness fails if the set changes in either
 direction.
 
@@ -69,7 +69,7 @@ corpus passed both before and after every one of them.
 
 ## Residual difference classes
 
-All 46 extras share one cause: ansible-lint aborts a file entirely when
+All 48 extras share one cause: ansible-lint aborts a file entirely when
 ansible's own loader or syntax check fails on it, and reports nothing else for
 that file. astl has no ansible runtime, so it lints the file anyway. The
 syntax-check subprocess, module argspec validation and collection resolution
@@ -81,8 +81,9 @@ are explicitly outside the port's scope.
 | Play references a role that does not exist | `norole.yml`, `norole2.yml`, `with-umlaut-ä.yml`, `multiline-bracketsmatchtest.yml`, `multiline-brackets-do-not-match-test.yml`, `rule-no-jinja-when-fail.yml` | 16 | Role resolution fails during syntax check |
 | Play imports or includes a file ansible rejects | `block.yml`, `include.yml` | 11 | `import_tasks: does-not-exist.yml`, and a play whose only key is `include_tasks`; on `include.yml` this also hides a `var-naming[no-role-prefix]` on a role entry key |
 | Task file under a directory containing a space | `playbooks/tasks/directory with spaces/main.yml` | 1 | Not collected by the upstream run |
+| Playbook made only of `import_playbook` entries fails syntax check | `corpus/site.yml` | 2 | `ansible-playbook --syntax-check` exits 1 on it, so upstream abandons the file; astl 0010's fix (a playbook whose first play is an `import_playbook` is now linted) then emits the two `name[play]` lines upstream itself emits when the syntax check passes, verified on a fixture against 26.8.0 |
 
-All paths are relative to `corpus/playbooks/`.
+All paths are relative to `corpus/playbooks/`, except `corpus/site.yml`.
 
 The three files the rule expansion added to the ratchet are each corroborated
 by upstream's own test suite, which pins the count astl reproduces:
