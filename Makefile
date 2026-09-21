@@ -18,7 +18,7 @@ BENCH_RUNS ?= 5
 COVER_MIN ?= 0
 
 # Pinned tool versions: must match .github/workflows/ci.yml.
-GOLANGCI_VERSION    ?= v2.12.2
+GOLANGCI_VERSION    ?= v2.13.1
 GOVULNCHECK_VERSION ?= v1.1.4
 
 .DEFAULT_GOAL := help
