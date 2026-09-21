@@ -36,9 +36,12 @@ corpus/playbooks/ematcher-rule.yml:2:3: key-order[play][/]: You can improve the 
 corpus/playbooks/ematcher-rule.yml:4:3: key-order[play][/]: You can improve the play key order to: name, hosts, tasks
 corpus/playbooks/example.yml:12: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/example.yml:13: yaml[trailing-spaces]: Trailing spaces
+corpus/playbooks/example.yml:15: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/playbooks/example.yml:18: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/example.yml:24: command-instead-of-module: git used in place of git module
 corpus/playbooks/example.yml:24: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/example.yml:27: command-instead-of-module: git used in place of git module
+corpus/playbooks/example.yml:30: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/example.yml:36: yaml[indentation][/]: Wrong indentation: expected 8 but found 6
 corpus/playbooks/example.yml:39: package-latest: Package installs should not use latest.
 corpus/playbooks/example.yml:42: name[missing][/]: All tasks should be named.
@@ -2061,6 +2064,11 @@ corpus/playbooks/role_vars_prefix_detection.yml:25:9: var-naming[no-role-prefix]
 corpus/playbooks/role_vars_prefix_detection.yml:32:9: var-naming[no-role-prefix]: Variables names from within roles should use role_vars_prefix_detection_ as a prefix. (vars: var1)
 corpus/playbooks/role_vars_prefix_detection.yml:45:9: var-naming[no-role-prefix]: Variables names from within roles should use role_vars_prefix_detection_ as a prefix. (vars: var1)
 corpus/playbooks/role_vars_prefix_detection.yml:9:7: var-naming[no-role-prefix]: Variables names from within roles should use role_vars_prefix_detection_ as a prefix. (vars: var1)
+corpus/playbooks/roles/bobbins/tasks/main.yml:2: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/playbooks/roles/fixture_1/tasks/main.yml:10: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/playbooks/roles/fixture_1/tasks/main.yml:15: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/playbooks/roles/fixture_1/tasks/main.yml:20: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/playbooks/roles/fixture_1/tasks/main.yml:4: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/roles/invalid-name:1: role-name: Role name invalid-name does not match ``^[a-z][a-z0-9_]*$`` pattern.
 corpus/playbooks/roles/invalid_due_to_meta:1: role-name: Role name invalid-due-to-meta does not match ``^[a-z][a-z0-9_]*$`` pattern.
 corpus/playbooks/roles/meta_categories_as_list/meta/main.yml:1: meta-no-tags: Tags must contain lowercase letters and digits only., invalid: 'MYTAG'
@@ -2189,6 +2197,8 @@ corpus/playbooks/skiptasks.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/skiptasks.yml:52: inline-env-var: Command module does not accept setting environment variables inline.
 corpus/playbooks/skiptasks.yml:56: inline-env-var: Command module does not accept setting environment variables inline.
 corpus/playbooks/skiptasks.yml:59: inline-env-var: Command module does not accept setting environment variables inline.
+corpus/playbooks/skiptasks.yml:5: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/playbooks/skiptasks.yml:8: latest[hg][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/taskincludes.yml:11: name[missing][/]: All tasks should be named.
 corpus/playbooks/taskincludes.yml:8: name[missing][/]: All tasks should be named.
 corpus/playbooks/taskincludes.yml:9: name[missing][/]: All tasks should be named.
@@ -2226,6 +2236,7 @@ corpus/playbooks/tasks/partial_prefix/main.yml:8:9: name[casing][/]: All names s
 corpus/playbooks/tasks/rule-name-prefix-fail.yml:2:9: name[casing][/]: All names should start with an uppercase letter.
 corpus/playbooks/tasks/rule-name-prefix-fail.yml:8:9: name[casing][/]: All names should start with an uppercase letter.
 corpus/playbooks/tasks/varset.yml:2: name[missing][/]: All tasks should be named.
+corpus/playbooks/tasks/varset.yml:4: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/tasks/varset.yml:4: name[missing][/]: All tasks should be named.
 corpus/playbooks/tasks/varunset.yml:2: name[missing][/]: All tasks should be named.
 corpus/playbooks/test_import_with_conflicting_action_statements.yml:2:3: name[play][/]: All plays should be named.
@@ -2293,8 +2304,14 @@ corpus/playbooks/with-multiple-yaml-violations.yml:4: yaml[trailing-spaces]: Tra
 corpus/playbooks/with-multiple-yaml-violations.yml:6: yaml[colons][/]: Too many spaces after colon
 corpus/playbooks/with-multiple-yaml-violations.yml:6: yaml[colons][/]: Too many spaces before colon
 corpus/playbooks/with-skip-tag-id.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/with-skip-tag-id.yml:4: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/with-skip-tag-id.yml:4: yaml[trailing-spaces]: Trailing spaces
 corpus/playbooks_globs/b.yml:3:3: name[play][/]: All plays should be named.
+corpus/roles/bobbins/tasks/main.yml:2: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/roles/fixture_1/tasks/main.yml:10: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/roles/fixture_1/tasks/main.yml:15: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/roles/fixture_1/tasks/main.yml:20: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/roles/fixture_1/tasks/main.yml:4: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/roles/invalid-name:1: role-name: Role name invalid-name does not match ``^[a-z][a-z0-9_]*$`` pattern.
 corpus/roles/invalid_due_to_meta:1: role-name: Role name invalid-due-to-meta does not match ``^[a-z][a-z0-9_]*$`` pattern.
 corpus/roles/meta_categories_as_list/meta/main.yml:1: meta-no-tags: Tags must contain lowercase letters and digits only., invalid: 'MYTAG'

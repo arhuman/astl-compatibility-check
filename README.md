@@ -26,7 +26,7 @@ reasoning and its limits.
 | Path | Contents |
 |---|---|
 | `corpus/` | The ansible-lint `examples/` tree, 510 files |
-| `golden/golden_pep8.txt` | ansible-lint 26.8.0 output over the corpus, filtered to the 38 rules astl implements: 2370 lines |
+| `golden/golden_pep8.txt` | ansible-lint 26.8.0 output over the corpus, filtered to the 39 rules astl implements: 2387 lines |
 | `golden/expected_extra.txt` | The 48 findings astl emits beyond the golden, each one reviewed and explained in `PARITY.md` |
 | `check_test.go` | The harness |
 

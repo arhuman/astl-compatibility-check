@@ -1,7 +1,7 @@
 # Parity report
 
-Reference: `ansible-lint 26.8.0 -f pep8` over `corpus/`, filtered to the 38
-rules astl implements, frozen as `golden/golden_pep8.txt` (2370 lines), with
+Reference: `ansible-lint 26.8.0 -f pep8` over `corpus/`, filtered to the 39
+rules astl implements, frozen as `golden/golden_pep8.txt` (2387 lines), with
 yamllint 1.38.0 and ansible-core 2.21.3 beneath it. All four pins live in
 `scripts/upstream.sh`.
 
@@ -28,17 +28,17 @@ Reproduce with `make check`.
 
 | Metric | Count |
 |---|---|
-| Golden lines | 2370 |
-| Matched | 2370 (100%) |
+| Golden lines | 2387 |
+| Matched | 2387 (100%) |
 | Missing | 0 |
 | Extra (false positives) | 48 |
 
-astl emits 2418 lines: every golden line, plus the 48 findings ansible-lint
+astl emits 2435 lines: every golden line, plus the 48 findings ansible-lint
 does not report. Those 48 are pinned line for line in
 `golden/expected_extra.txt`, and the harness fails if the set changes in either
 direction.
 
-Five of the 38 rules are opt-in upstream (`empty-string-compare`,
+Five of the 39 rules are opt-in upstream (`empty-string-compare`,
 `galaxy-version-incorrect`, `jinja-template-extension`, `no-log-password`,
 `no-prompting`) and one, `loop-var-prefix`, is inert until `loop_var_prefix` is
 set. astl keeps all six off by default for the same reason, so they contribute

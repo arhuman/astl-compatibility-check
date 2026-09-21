@@ -12,7 +12,7 @@
 RULES='avoid-implicit|command-instead-of-module|command-instead-of-shell'
 RULES="$RULES|complexity|deprecated-bare-vars|deprecated-local-action"
 RULES="$RULES|empty-string-compare|galaxy|galaxy-version-incorrect|ignore-errors"
-RULES="$RULES|inline-env-var|jinja-template-extension|key-order|literal-compare"
+RULES="$RULES|inline-env-var|jinja-template-extension|key-order|latest|literal-compare"
 RULES="$RULES|loop-var-prefix|meta-incorrect|meta-no-tags|meta-runtime"
 RULES="$RULES|meta-video-links|name|no-changed-when|no-handler|no-jinja-when"
 RULES="$RULES|no-log-password|no-prompting|no-relative-paths|no-tabs"
