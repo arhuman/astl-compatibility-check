@@ -8,6 +8,14 @@ All notable changes to this project are documented here. Format:
 
 ## [Unreleased]
 
+### Added - 2026-09-23
+
+- `make bench-compare`: reproduces the astl vs ansible-lint numbers astl's
+  README publishes. It builds astl, installs the pinned upstream toolchain in a
+  throwaway venv and times cold start, a single playbook, the corpus and max RSS
+  under hyperfine. `make bench` stays the one-sided CI guard; this target is the
+  comparison, which nothing could previously reproduce.
+
 No version has been tagged. What follows is the initial public release: the
 compatibility contract between
 [astl](https://github.com/arhuman/ansible-static-lint) and ansible-lint 26.8.0.

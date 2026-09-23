@@ -22,7 +22,7 @@ GOLANGCI_VERSION    ?= v2.13.1
 GOVULNCHECK_VERSION ?= v1.1.4
 
 .DEFAULT_GOAL := help
-.PHONY: audit bench check cover help regenerate regenerate-cases tidy tools
+.PHONY: audit bench bench-compare check cover help regenerate regenerate-cases tidy tools
 
 ## audit: run quality control checks (mod verify, lint, vuln scan, coverage gate)
 audit: cover
@@ -35,6 +35,12 @@ audit: cover
 ## bench: build astl and fail if linting corpus/ exceeds BENCH_BUDGET_MS
 bench:
 	@ASTL_VERSION=$(ASTL_VERSION) ./scripts/bench.sh "$(ASTL_REPO)" corpus $(BENCH_BUDGET_MS) $(BENCH_RUNS)
+
+## bench-compare: reproduce the published astl vs ansible-lint numbers (needs hyperfine)
+# Not a gate: bench above is the one-sided guard CI runs. This target exists so
+# the comparison quoted in astl's README can be reproduced rather than trusted.
+bench-compare:
+	@./scripts/bench-compare.sh "$(ASTL_REPO)" corpus $(BENCH_RUNS)
 
 ## check: build astl and assert its output against the frozen golden files
 # Covers both contracts: the upstream corpus and this project's own cases/.
