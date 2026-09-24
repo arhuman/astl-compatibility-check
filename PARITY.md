@@ -38,7 +38,7 @@ does not report. Those 55 are pinned line for line in
 `golden/expected_extra.txt`, and the harness fails if the set changes in either
 direction.
 
-Five of the 39 rules are opt-in upstream (`empty-string-compare`,
+Five of the 40 rules are opt-in upstream (`empty-string-compare`,
 `galaxy-version-incorrect`, `jinja-template-extension`, `no-log-password`,
 `no-prompting`) and one, `loop-var-prefix`, is inert until `loop_var_prefix` is
 set. astl keeps all six off by default for the same reason, so they contribute

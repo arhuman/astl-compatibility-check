@@ -8,7 +8,7 @@
 # never runs ansible-lint.
 #
 # The comparison is asymmetric and the output says so: ansible-lint is also
-# running its syntax-check subprocess and the 12 rules astl does not implement.
+# running its syntax-check subprocess and the 11 rules astl does not implement.
 # The honest headline numbers are cold start and the single playbook, where the
 # gap is interpreter and import overhead that exists before any rule runs.
 #
@@ -96,4 +96,4 @@ esac
 
 echo
 echo "Read the corpus ratio with care: ansible-lint is also running its"
-echo "syntax-check subprocess and the 12 rules astl does not implement."
+echo "syntax-check subprocess and the 11 rules astl does not implement."

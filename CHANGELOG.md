@@ -10,6 +10,11 @@ All notable changes to this project are documented here. Format:
 
 ### Changed - 2026-09-24
 
+- The counts published here follow the golden: 40 rules implemented (was 39),
+  11 unsupported (was 12), 2417 golden lines (was 2387), 55 reviewed extras in
+  five classes (was 48 in four, the fourth already stale before this release).
+  `scripts/bench-compare.sh` printed the old figure to anyone who ran it.
+
 - The reviewed extras go from 48 to 55: astl's new `no-free-form` rule reaches
   two files ansible-lint abandons before linting them, `block.yml` (an
   `import_tasks` of a file that does not exist) and `nomatches.yml` (an

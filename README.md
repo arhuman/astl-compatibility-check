@@ -26,8 +26,8 @@ reasoning and its limits.
 | Path | Contents |
 |---|---|
 | `corpus/` | The ansible-lint `examples/` tree, 510 files |
-| `golden/golden_pep8.txt` | ansible-lint 26.8.0 output over the corpus, filtered to the 39 rules astl implements: 2387 lines |
-| `golden/expected_extra.txt` | The 48 findings astl emits beyond the golden, each one reviewed and explained in `PARITY.md` |
+| `golden/golden_pep8.txt` | ansible-lint 26.8.0 output over the corpus, filtered to the 40 rules astl implements: 2417 lines |
+| `golden/expected_extra.txt` | The 55 findings astl emits beyond the golden, each one reviewed and explained in `PARITY.md` |
 | `check_test.go` | The harness |
 
 The assertion is an identity, not a threshold:
@@ -39,7 +39,7 @@ The assertion is an identity, not a threshold:
    An expected extra that stopped appearing also fails: behaviour changed, and
    the file must be updated deliberately rather than drift.
 
-`PARITY.md` documents the 48 extras, the four classes they fall into, and the
+`PARITY.md` documents the 55 extras, the five classes they fall into, and the
 upstream quirks astl reproduces on purpose.
 
 ## Running
