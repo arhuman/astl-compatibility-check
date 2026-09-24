@@ -8,6 +8,16 @@ All notable changes to this project are documented here. Format:
 
 ## [Unreleased]
 
+### Changed - 2026-09-24
+
+- The golden output now carries `no-free-form`, which the rule filter left out:
+  `golden/golden_pep8.txt` goes from 2387 to 2417 lines, the 30 new ones all
+  findings of that rule. The corpus already held upstream's fixtures for it, so
+  only the filter in `scripts/rules.sh` changed; `corpus/` and the 48 expected
+  extras are untouched. astl does not implement the rule yet, so the corpus
+  check fails on those 30 lines until it does. That is the point: the contract
+  leads the implementation rather than following it.
+
 ### Added - 2026-09-23
 
 - `make bench-compare`: reproduces the astl vs ansible-lint numbers astl's

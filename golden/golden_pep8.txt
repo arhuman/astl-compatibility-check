@@ -38,13 +38,17 @@ corpus/playbooks/example.yml:12: no-changed-when: Commands should not change thi
 corpus/playbooks/example.yml:13: yaml[trailing-spaces]: Trailing spaces
 corpus/playbooks/example.yml:15: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/example.yml:18: latest[git][/]: Result of the command may vary on subsequent runs.
+corpus/playbooks/example.yml:21: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.git)
 corpus/playbooks/example.yml:24: command-instead-of-module: git used in place of git module
 corpus/playbooks/example.yml:24: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/example.yml:27: command-instead-of-module: git used in place of git module
 corpus/playbooks/example.yml:30: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/example.yml:36: yaml[indentation][/]: Wrong indentation: expected 8 but found 6
+corpus/playbooks/example.yml:39: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.dnf)
 corpus/playbooks/example.yml:39: package-latest: Package installs should not use latest.
 corpus/playbooks/example.yml:42: name[missing][/]: All tasks should be named.
+corpus/playbooks/example.yml:42: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.debug)
+corpus/playbooks/example.yml:44: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.apt)
 corpus/playbooks/example.yml:44: package-latest: Package installs should not use latest.
 corpus/playbooks/example.yml:47: name[missing][/]: All tasks should be named.
 corpus/playbooks/example.yml:9: no-changed-when: Commands should not change things if nothing needs doing.
@@ -2045,13 +2049,18 @@ corpus/playbooks/no_relative_paths_fail.yml:10: no-relative-paths: The src argum
 corpus/playbooks/no_relative_paths_fail.yml:5: no-relative-paths: The src argument should not use a relative path.
 corpus/playbooks/noqa-nested.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/noqa.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/noqa.yml:4: no-free-form: Avoid using free-form when calling module actions. (git)
 corpus/playbooks/package-check-failure.yml:12: package-latest: Package installs should not use latest.
 corpus/playbooks/package-check-failure.yml:17: package-latest: Package installs should not use latest.
 corpus/playbooks/package-check-failure.yml:23: package-latest: Package installs should not use latest.
 corpus/playbooks/package-check-failure.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/package-check-failure.yml:4: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.yum)
 corpus/playbooks/package-check-failure.yml:4: package-latest: Package installs should not use latest.
+corpus/playbooks/package-check-failure.yml:7: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.pip)
 corpus/playbooks/package-check-failure.yml:7: package-latest: Package installs should not use latest.
 corpus/playbooks/package-check-success.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/package-check-success.yml:4: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.yum)
+corpus/playbooks/package-check-success.yml:7: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.pip)
 corpus/playbooks/pass-loop-var-prefix.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/play.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/play.yml:5: command-instead-of-module: service used in place of service module
@@ -2152,6 +2161,7 @@ corpus/playbooks/rule-deprecated-bare-vars-fail.yml:71: deprecated-bare-vars: Po
 corpus/playbooks/rule-deprecated-bare-vars-fail.yml:78: deprecated-bare-vars: Possible bare variable 'my_list' used in a 'with_random_choice' loop. You should use the full variable syntax ('{{ my_list }}') or convert it to a list if that is not really a variable.
 corpus/playbooks/rule-deprecated-bare-vars-fail.yml:83: deprecated-bare-vars: Possible bare variable 'my_filenames' used in a 'with_first_found' loop. You should use the full variable syntax ('{{ my_filenames }}') or convert it to a list if that is not really a variable.
 corpus/playbooks/rule-deprecated-bare-vars-fail.yml:88: deprecated-bare-vars: Possible bare variable 'my_list' used in a 'with_indexed_items' loop. You should use the full variable syntax ('{{ my_list }}') or convert it to a list if that is not really a variable.
+corpus/playbooks/rule-deprecated-command-syntax.yml:5: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
 corpus/playbooks/rule-deprecated-local-action-fail.yml:5: deprecated-local-action: Do not use 'local_action', use 'delegate_to: localhost'.
 corpus/playbooks/rule-key-order-fail.yml:13: key-order[task][/]: You can improve the task key order to: name, delegate_to, ansible.builtin.command, changed_when
 corpus/playbooks/rule-key-order-fail.yml:17: key-order[task][/]: You can improve the task key order to: name, loop, ansible.builtin.command, changed_when
@@ -2170,7 +2180,13 @@ corpus/playbooks/rule-name-templated-fail.yml:5:13: name[template][/]: Jinja tem
 corpus/playbooks/rule-no-changed-when-fail.yml:12: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/rule-no-changed-when-fail.yml:14: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/rule-no-changed-when-fail.yml:5: no-changed-when: Commands should not change things if nothing needs doing.
+corpus/playbooks/rule-no-free-form-fail.yml:13: no-free-form[raw-non-string]: Passing a non string value to `raw` module is neither documented or supported.
+corpus/playbooks/rule-no-free-form-fail.yml:18: no-free-form: Avoid using free-form when calling module actions. (file)
+corpus/playbooks/rule-no-free-form-fail.yml:21: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.uri)
+corpus/playbooks/rule-no-free-form-fail.yml:24: no-free-form: Avoid using free-form when calling module actions. (template)
 corpus/playbooks/rule-no-free-form-fail.yml:24: risky-file-permissions: File permissions unset or incorrect.
+corpus/playbooks/rule-no-free-form-fail.yml:5: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
+corpus/playbooks/rule-no-free-form-fail.yml:9: no-free-form[raw][/]: Avoid embedding `executable=` inside raw calls, use explicit args dictionary instead.
 corpus/playbooks/rule-no-handler-fail.yml:15:13: no-handler: Tasks that run when changed should likely be handlers.
 corpus/playbooks/rule-partial-become-without-become-fail.yml:14: partial-become[task][/]: ``become_user`` should have a corresponding ``become`` at the same level as itself.
 corpus/playbooks/rule-partial-become-without-become-fail.yml:24: partial-become[task][/]: ``become_user`` should have a corresponding ``become`` at the same level as itself.
@@ -2193,10 +2209,14 @@ corpus/playbooks/rule_literal_compare_fail.yml:15: literal-compare: Don't compar
 corpus/playbooks/rule_literal_compare_fail.yml:5: literal-compare: Don't compare to literal True/False.
 corpus/playbooks/run-once-fail.yml:1: run-once[play][/]: Play uses strategy: free
 corpus/playbooks/run-once-fail.yml:9: run-once[task][/]: Using run_once may behave differently if strategy is set to free.
+corpus/playbooks/skiptasks.yml:15: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
 corpus/playbooks/skiptasks.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/skiptasks.yml:52: inline-env-var: Command module does not accept setting environment variables inline.
+corpus/playbooks/skiptasks.yml:52: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
 corpus/playbooks/skiptasks.yml:56: inline-env-var: Command module does not accept setting environment variables inline.
+corpus/playbooks/skiptasks.yml:56: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
 corpus/playbooks/skiptasks.yml:59: inline-env-var: Command module does not accept setting environment variables inline.
+corpus/playbooks/skiptasks.yml:59: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
 corpus/playbooks/skiptasks.yml:5: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/skiptasks.yml:8: latest[hg][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/taskincludes.yml:11: name[missing][/]: All tasks should be named.
@@ -2206,10 +2226,12 @@ corpus/playbooks/tasks/empty_blocks.yml:4:13: name[casing][/]: All names should 
 corpus/playbooks/tasks/empty_blocks.yml:9: name[missing][/]: All tasks should be named.
 corpus/playbooks/tasks/include-in-block-inner.yml:4:13: name[casing][/]: All names should start with an uppercase letter.
 corpus/playbooks/tasks/included-with-lint.yml:3: name[missing][/]: All tasks should be named.
+corpus/playbooks/tasks/local_action.transformed.yml:19: no-free-form: Avoid using free-form when calling module actions. (file)
 corpus/playbooks/tasks/local_action.transformed.yml:23: command-instead-of-shell: Use shell only when shell functionality is required.
 corpus/playbooks/tasks/local_action.transformed.yml:23: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/tasks/local_action.transformed.yml:26: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/tasks/local_action.transformed.yml:2: no-changed-when: Commands should not change things if nothing needs doing.
+corpus/playbooks/tasks/local_action.transformed.yml:32: no-free-form: Avoid using free-form when calling module actions. (copy)
 corpus/playbooks/tasks/local_action.transformed.yml:32: risky-file-permissions: File permissions unset or incorrect.
 corpus/playbooks/tasks/local_action.transformed.yml:5: no-changed-when: Commands should not change things if nothing needs doing.
 corpus/playbooks/tasks/local_action.yml:10: deprecated-local-action: Do not use 'local_action', use 'delegate_to: localhost'.
@@ -2236,9 +2258,12 @@ corpus/playbooks/tasks/partial_prefix/main.yml:8:9: name[casing][/]: All names s
 corpus/playbooks/tasks/rule-name-prefix-fail.yml:2:9: name[casing][/]: All names should start with an uppercase letter.
 corpus/playbooks/tasks/rule-name-prefix-fail.yml:8:9: name[casing][/]: All names should start with an uppercase letter.
 corpus/playbooks/tasks/varset.yml:2: name[missing][/]: All tasks should be named.
+corpus/playbooks/tasks/varset.yml:2: no-free-form: Avoid using free-form when calling module actions. (debug)
 corpus/playbooks/tasks/varset.yml:4: latest[git][/]: Result of the command may vary on subsequent runs.
 corpus/playbooks/tasks/varset.yml:4: name[missing][/]: All tasks should be named.
+corpus/playbooks/tasks/varset.yml:4: no-free-form: Avoid using free-form when calling module actions. (git)
 corpus/playbooks/tasks/varunset.yml:2: name[missing][/]: All tasks should be named.
+corpus/playbooks/tasks/varunset.yml:2: no-free-form: Avoid using free-form when calling module actions. (debug)
 corpus/playbooks/test_import_with_conflicting_action_statements.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/test_import_with_conflicting_action_statements.yml:4: name[missing][/]: All tasks should be named.
 corpus/playbooks/test_skip_inside_yaml.yml:19: partial-become[task][/]: ``become_user`` should have a corresponding ``become`` at the same level as itself.
@@ -2256,6 +2281,11 @@ corpus/playbooks/transform-key-order.yml:6: key-order[task][/]: You can improve 
 corpus/playbooks/transform-name.yml:14:13: name[casing][/]: All names should start with an uppercase letter.
 corpus/playbooks/transform-name.yml:5:13: name[casing][/]: All names should start with an uppercase letter.
 corpus/playbooks/transform-name.yml:9:13: name[casing][/]: All names should start with an uppercase letter.
+corpus/playbooks/transform-no-free-form.yml:13: no-free-form[raw][/]: Avoid embedding `executable=` inside raw calls, use explicit args dictionary instead.
+corpus/playbooks/transform-no-free-form.yml:17: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.debug)
+corpus/playbooks/transform-no-free-form.yml:21: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.set_fact)
+corpus/playbooks/transform-no-free-form.yml:5: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
+corpus/playbooks/transform-no-free-form.yml:9: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.command)
 corpus/playbooks/transform-no-jinja-when.yml:13:7: no-jinja-when: No Jinja2 in when.
 corpus/playbooks/transform-no-jinja-when.yml:19:7: no-jinja-when: No Jinja2 in when.
 corpus/playbooks/transform-no-jinja-when.yml:5: no-jinja-when: No Jinja2 in when.
