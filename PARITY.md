@@ -1,7 +1,7 @@
 # Parity report
 
 Reference: `ansible-lint 26.8.0 -f pep8` over `corpus/`, filtered to the 39
-rules astl implements, frozen as `golden/golden_pep8.txt` (2387 lines), with
+rules astl implements, frozen as `golden/golden_pep8.txt` (2417 lines), with
 yamllint 1.38.0 and ansible-core 2.21.3 beneath it. All four pins live in
 `scripts/upstream.sh`.
 
@@ -28,13 +28,13 @@ Reproduce with `make check`.
 
 | Metric | Count |
 |---|---|
-| Golden lines | 2387 |
-| Matched | 2387 (100%) |
+| Golden lines | 2417 |
+| Matched | 2417 (100%) |
 | Missing | 0 |
-| Extra (false positives) | 48 |
+| Extra (false positives) | 55 |
 
-astl emits 2435 lines: every golden line, plus the 48 findings ansible-lint
-does not report. Those 48 are pinned line for line in
+astl emits 2472 lines: every golden line, plus the 55 findings ansible-lint
+does not report. Those 55 are pinned line for line in
 `golden/expected_extra.txt`, and the harness fails if the set changes in either
 direction.
 
@@ -69,7 +69,7 @@ corpus passed both before and after every one of them.
 
 ## Residual difference classes
 
-All 48 extras share one cause: ansible-lint aborts a file entirely when
+All 55 extras share one cause: ansible-lint aborts a file entirely when
 ansible's own loader or syntax check fails on it, and reports nothing else for
 that file. astl has no ansible runtime, so it lints the file anyway. The
 syntax-check subprocess, module argspec validation and collection resolution
@@ -77,9 +77,9 @@ are explicitly outside the port's scope.
 
 | Class | Files | Extra lines | Why upstream reports nothing |
 |---|---|---|---|
-| Play or task references a module that cannot be resolved | `nomatches.yml`, `syntax-error-string.yml`, `mocked_dependency.yml`, `rule-fqcn-pass.yml`, `rule-risky-file-permissions-fail.yml`, `rule-no-tabs.yml` | 18 | The module (`ansible.builtin.action`, `x.y.z.w`, `community.general.ini_file`, `community.windows.win_lineinfile`, ...) is not installed, so `ModuleArgsParser` raises and the file is abandoned |
+| Play or task references a module that cannot be resolved | `nomatches.yml`, `syntax-error-string.yml`, `mocked_dependency.yml`, `rule-fqcn-pass.yml`, `rule-risky-file-permissions-fail.yml`, `rule-no-tabs.yml` | 20 | The module (`ansible.builtin.action`, `x.y.z.w`, `community.general.ini_file`, `community.windows.win_lineinfile`, ...) is not installed, so `ModuleArgsParser` raises and the file is abandoned |
 | Play references a role that does not exist | `norole.yml`, `norole2.yml`, `with-umlaut-ä.yml`, `multiline-bracketsmatchtest.yml`, `multiline-brackets-do-not-match-test.yml`, `rule-no-jinja-when-fail.yml` | 16 | Role resolution fails during syntax check |
-| Play imports or includes a file ansible rejects | `block.yml`, `include.yml` | 11 | `import_tasks: does-not-exist.yml`, and a play whose only key is `include_tasks`; on `include.yml` this also hides a `var-naming[no-role-prefix]` on a role entry key |
+| Play imports or includes a file ansible rejects | `block.yml`, `include.yml` | 16 | `import_tasks: does-not-exist.yml`, and a play whose only key is `include_tasks`; on `include.yml` this also hides a `var-naming[no-role-prefix]` on a role entry key |
 | Task file under a directory containing a space | `playbooks/tasks/directory with spaces/main.yml` | 1 | Not collected by the upstream run |
 | Playbook made only of `import_playbook` entries fails syntax check | `corpus/site.yml` | 2 | `ansible-playbook --syntax-check` exits 1 on it, so upstream abandons the file; astl 0010's fix (a playbook whose first play is an `import_playbook` is now linted) then emits the two `name[play]` lines upstream itself emits when the syntax check passes, verified on a fixture against 26.8.0 |
 

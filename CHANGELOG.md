@@ -10,6 +10,13 @@ All notable changes to this project are documented here. Format:
 
 ### Changed - 2026-09-24
 
+- The reviewed extras go from 48 to 55: astl's new `no-free-form` rule reaches
+  two files ansible-lint abandons before linting them, `block.yml` (an
+  `import_tasks` of a file that does not exist) and `nomatches.yml` (an
+  `ansible.builtin.action` that resolves to no installed module). Both were
+  already documented divergence classes in PARITY.md; no new class appears.
+
+
 - The golden output now carries `no-free-form`, which the rule filter left out:
   `golden/golden_pep8.txt` goes from 2387 to 2417 lines, the 30 new ones all
   findings of that rule. The corpus already held upstream's fixtures for it, so

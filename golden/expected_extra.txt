@@ -1,6 +1,11 @@
+corpus/playbooks/block.yml:14: no-free-form: Avoid using free-form when calling module actions. (debug)
+corpus/playbooks/block.yml:17: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.debug)
+corpus/playbooks/block.yml:22: no-free-form: Avoid using free-form when calling module actions. (debug)
+corpus/playbooks/block.yml:25: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.debug)
 corpus/playbooks/block.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/block.yml:5: name[missing][/]: All tasks should be named.
 corpus/playbooks/block.yml:8: name[missing][/]: All tasks should be named.
+corpus/playbooks/block.yml:9: no-free-form: Avoid using free-form when calling module actions. (debug)
 corpus/playbooks/include.yml:12: name[missing][/]: All tasks should be named.
 corpus/playbooks/include.yml:13: name[missing][/]: All tasks should be named.
 corpus/playbooks/include.yml:14: name[missing][/]: All tasks should be named.
@@ -21,6 +26,8 @@ corpus/playbooks/multiline-bracketsmatchtest.yml:2:3: role-name[path][/]: Avoid 
 corpus/playbooks/multiline-bracketsmatchtest.yml:2:3: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/repos)
 corpus/playbooks/multiline-bracketsmatchtest.yml:6:7: role-name[path][/]: Avoid using paths when importing roles. (../../../roles/openshift_master)
 corpus/playbooks/nomatches.yml:2:3: name[play][/]: All plays should be named.
+corpus/playbooks/nomatches.yml:5: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.action)
+corpus/playbooks/nomatches.yml:8: no-free-form: Avoid using free-form when calling module actions. (ansible.builtin.action)
 corpus/playbooks/norole.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/norole2.yml:2:3: name[play][/]: All plays should be named.
 corpus/playbooks/rule-fqcn-pass.yml:12: no-changed-when: Commands should not change things if nothing needs doing.
