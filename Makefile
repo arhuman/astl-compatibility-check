@@ -44,12 +44,16 @@ bench-compare:
 
 ## check: build astl and assert its output against the frozen golden files
 # Covers both contracts: the upstream corpus and this project's own cases/.
+# -count=1 because the harness shells out to `go build` on ASTL_REPO, so astl's
+# sources are not part of Go's test cache key: without it a verdict computed
+# against different astl source is returned as `ok (cached)`, and a local
+# `make parity` can report success without having compared the working tree.
 check:
-	@ASTL_REPO=$(ASTL_REPO) ASTL_VERSION=$(ASTL_VERSION) go test ./...
+	@ASTL_REPO=$(ASTL_REPO) ASTL_VERSION=$(ASTL_VERSION) go test -count=1 ./...
 
 ## cover: run the check with coverage and fail below COVER_MIN
 cover:
-	@ASTL_REPO=$(ASTL_REPO) ASTL_VERSION=$(ASTL_VERSION) go test -covermode=atomic -coverprofile=coverage.out ./...
+	@ASTL_REPO=$(ASTL_REPO) ASTL_VERSION=$(ASTL_VERSION) go test -count=1 -covermode=atomic -coverprofile=coverage.out ./...
 	@go tool cover -func=coverage.out | awk '/^total:/ {print "coverage: " $$3}'
 	@total=$$(go tool cover -func=coverage.out | awk '/^total:/ {print $$3}' | tr -d '%'); \
 	awk -v t="$$total" -v min="$(COVER_MIN)" 'BEGIN { if (t+0 < min+0) { printf "FAIL: coverage %.1f%% < %d%%\n", t, min; exit 1 } }'
